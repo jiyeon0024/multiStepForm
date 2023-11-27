@@ -7,7 +7,7 @@ import { Bs4Circle } from "react-icons/bs";
 
 function SideMenu({ checkStep1, checkStep2, checkStep3, checkStep4 }) {
   return (
-    <div className="bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat   p-6 rounded-lg min-w-[30%] bg-cover ">
+    <div className="bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat   p-6 rounded-lg min-w-[35%] bg-cover bg-bottom  ">
       <ul className="flex flex-col gap-7">
         <li className="text-white flex justify-start items-center gap-3">
           <Bs1Circle

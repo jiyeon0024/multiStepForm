@@ -1,8 +1,9 @@
 import React from "react";
 import NextBtn from "./NextBtn";
+import ButtonLayout from "./ButtonLayout";
 function PersonalInfo() {
   return (
-    <form className=" py-3 min-w-[500px] flex flex-col items-start justify-center ">
+    <form className=" py-5  flex flex-col items-start justify-center w-[400px] max-w-[100%] ">
       <h3 className="font-extrabold text-3xl text-[#02295a]">Personal info</h3>
       <p className="text-gray-400 mt-3">
         Please provide your name, email, address, and phone number.
@@ -27,9 +28,6 @@ function PersonalInfo() {
           Phone
         </label>
         <input type="text" className="border border-gray-300 rounded py-1" />
-      </div>
-      <div className="flex justify-end w-full items-end mt-44">
-        <NextBtn />
       </div>
     </form>
   );
