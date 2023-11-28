@@ -72,7 +72,7 @@ function App() {
 
   return (
     <div className="bg-[#f0f6ff] w-screen h-screen flex justify-center items-center">
-      <div className="bg-white  p-5 rounded-lg min-w-[60%]  max-h-[100%] flex  h-[600px] ">
+      <div className="bg-white  p-5 rounded-lg min-w-[50%]  max-h-[100%] flex  h-[600px] ">
         <SideMenu
           checkStep1={checkStep1}
           checkStep2={checkStep2}
@@ -82,25 +82,29 @@ function App() {
         <div className="flex flex-col items-center pl-5 w-full  ">
           <div className="h-[600px] ">
             {step1 ? (
-              <PersonalInfo />
+              <PersonalInfo step1={step1} step4={step4} />
             ) : step2 ? (
-              <SelectPlan />
+              <SelectPlan step1={step1} step4={step4} />
             ) : step3 ? (
-              <AddOns />
+              <AddOns step1={step1} step4={step4} />
             ) : step4 && !thankModal ? (
-              <Summary />
+              <Summary
+                step1={step1}
+                step4={step4}
+                thankModal={thankModal}
+                setThankModal={setThankModal}
+              />
             ) : thankModal && step4 ? (
               <ThankModal />
             ) : null}
           </div>
-
-          {/* {thankModal ? <ThankModal /> : null} */}
+          {/* 
           <ButtonLayout
             step1={step1}
             step4={step4}
             thankModal={thankModal}
             setThankModal={setThankModal}
-          />
+          /> */}
         </div>
       </div>
     </div>

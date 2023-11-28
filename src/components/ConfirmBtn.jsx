@@ -1,7 +1,6 @@
 import React from "react";
 
 function ConfirmBtn({ thankModal, setThankModal }) {
-  console.log(thankModal);
   const checkThankModal = () => {
     if (!thankModal) {
       setThankModal(true);

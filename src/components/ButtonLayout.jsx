@@ -3,13 +3,13 @@ import NextBtn from "./NextBtn";
 import GoBackBtn from "./GoBackBtn";
 import ConfirmBtn from "./ConfirmBtn";
 
-function ButtonLayout({ step1, step4, thankModal, setThankModal }) {
+function ButtonLayout({ step1, step4, thankModal, setThankModal, user }) {
   return (
     <div className="flex justify-end  items-end mt-20  w-[400px] max-w-[100%]">
       {!step1 && !step4 ? (
         <div className="flex justify-between items-center w-full">
           <GoBackBtn />
-          <NextBtn />
+          <NextBtn user={user} />
         </div>
       ) : !step1 && step4 ? (
         <div
@@ -21,7 +21,7 @@ function ButtonLayout({ step1, step4, thankModal, setThankModal }) {
           <ConfirmBtn thankModal={thankModal} setThankModal={setThankModal} />
         </div>
       ) : (
-        <NextBtn />
+        <NextBtn user={user} />
       )}
     </div>
   );
