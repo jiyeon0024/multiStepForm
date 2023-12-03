@@ -1,8 +1,8 @@
 import React from "react";
 
-function ConfirmBtn({ thankModal, setThankModal }) {
+function ConfirmBtn({ step, inc }) {
   const checkThankModal = () => {
-    if (!thankModal) {
+    if (step === 5) {
       setThankModal(true);
     }
   };
@@ -10,6 +10,7 @@ function ConfirmBtn({ thankModal, setThankModal }) {
     <button
       className="text-white bg-[#473dff] rounded-md px-4 py-2 text-sm "
       onClick={() => {
+        inc();
         checkThankModal();
       }}
     >

@@ -1,8 +1,11 @@
 import React from "react";
 
-function GoBackBtn() {
+function GoBackBtn({ onClick }) {
   return (
-    <button className="text-gray-400 cursor-pointer  rounded-md  py-2 text-sm ">
+    <button
+      className="text-gray-400 cursor-pointer  rounded-md  py-2 text-sm "
+      onClick={onClick}
+    >
       Go Back
     </button>
   );

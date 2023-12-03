@@ -1,30 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import ButtonLayout from "./ButtonLayout";
+
 import UserInfoSchema from "../util/formValidation";
 
-function PersonalInfo({ step1, step4 }) {
-  const [user, setUser] = useState("");
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-    },
-    validationSchema: UserInfoSchema,
-    onSubmit: (values) => {
-      //   alert(JSON.stringify(values, null, 2));
-      setUser(values);
-      //   console.log(values);
-    },
-  });
-
-  useEffect(() => {}, [user]);
+function PersonalInfo({ formik }) {
+  //   console.log(formik.values);
   return (
-    <form
-      className=" py-5  flex flex-col items-start justify-center w-[400px] max-w-[100%] "
-      onSubmit={formik.handleSubmit}
-    >
+    <>
       <h3 className="font-extrabold text-3xl text-[#02295a]">Personal info</h3>
       <p className="text-gray-400 mt-3">
         Please provide your name, email, address, and phone number.
@@ -100,8 +82,7 @@ function PersonalInfo({ step1, step4 }) {
           placeholder="e.g +1 234 567 890"
         />
       </div>
-      <ButtonLayout step1={step1} step4={step4} user={user} />
-    </form>
+    </>
   );
 }
 
