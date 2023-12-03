@@ -5,13 +5,15 @@ import { Bs2Circle } from "react-icons/bs";
 import { Bs3Circle } from "react-icons/bs";
 import { Bs4Circle } from "react-icons/bs";
 
-function SideMenu({ setStep }) {
+function SideMenu({ setStep, formik }) {
   return (
     <div className="bg-[url('./images/bg-sidebar-desktop.svg')]  bg-no-repeat   p-6 rounded-lg min-w-[35%] bg-cover bg-bottom  ">
       <ul className="flex flex-col gap-7">
         <li
           className="text-white flex justify-start items-center gap-3 cursor-pointer"
-          onClick={() => setStep(1)}
+          onClick={() => {
+            setStep(1);
+          }}
         >
           <Bs1Circle size={30} className="text-white cursor-pointer" />
           <div className="">
@@ -22,7 +24,15 @@ function SideMenu({ setStep }) {
 
         <li
           className="text-white flex justify-start items-center gap-3 cursor-pointer"
-          onClick={() => setStep(2)}
+          onClick={() => {
+            if (
+              formik.values.email !== "" &&
+              formik.values.name !== "" &&
+              formik.values.phone !== ""
+            ) {
+              setStep(2);
+            }
+          }}
         >
           <Bs2Circle size={30} className="text-white cursor-pointer" />
           <div className="">

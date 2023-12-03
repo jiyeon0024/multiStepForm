@@ -45,14 +45,16 @@ function App() {
 
   const dec = () => {
     if (step === 1) return;
+
     setStep(step - 1);
   };
+
   console.log(formik.values);
 
   return (
     <div className="bg-[#f0f6ff] w-screen h-screen flex justify-center items-center">
       <div className="bg-white  p-5 rounded-lg min-w-[50%]  max-h-[100%] flex  h-[600px] ">
-        <SideMenu setStep={setStep} />
+        <SideMenu setStep={setStep} formik={formik} />
         <div className="flex flex-col items-center pl-5 w-full  ">
           <form onSubmit={formik.handleSubmit} className="h-[600px] ">
             {step === 1 ? (
