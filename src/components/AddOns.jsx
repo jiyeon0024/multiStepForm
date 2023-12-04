@@ -84,14 +84,14 @@ function AddOns({ formik }) {
               {click1 ? (
                 <MdCheckBox
                   onClick={() => {
-                    filtered("lagerStorage");
+                    filtered("largerStorage");
                   }}
                 />
               ) : (
                 <MdCheckBoxOutlineBlank
                   className="text-gray-300"
                   onClick={() => {
-                    handleAddons("lagerStorage");
+                    handleAddons("largerStorage");
                   }}
                 />
               )}

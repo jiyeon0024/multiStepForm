@@ -24,7 +24,7 @@ function SelectPlan({ formik }) {
       <div className="w-full pt-7">
         <div className="flex gap-5 justify-start items-center w-full ">
           <div
-            onClick={() => handleSelectPlan("arcade")}
+            onClick={() => handleSelectPlan("Arcade")}
             className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
           >
             <img src="./images/icon-arcade.svg" alt="" className="pb-5" />
@@ -41,7 +41,7 @@ function SelectPlan({ formik }) {
             <p className="text-sm text-gray-400">$9/mo</p>
           </div>
           <div
-            onClick={() => handleSelectPlan("advanced")}
+            onClick={() => handleSelectPlan("Advanced")}
             className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
           >
             <img src="./images/icon-advanced.svg" alt="" className="pb-5" />
@@ -49,7 +49,7 @@ function SelectPlan({ formik }) {
             <p className="text-sm text-gray-400">$12/mo</p>
           </div>
           <div
-            onClick={() => handleSelectPlan("pro")}
+            onClick={() => handleSelectPlan("Pro")}
             className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
           >
             <img src="./images/icon-pro.svg" alt="" className="pb-5" />
