@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 
-import UserInfoSchema from "../util/formValidation";
-
 function PersonalInfo({ formik }) {
   //   console.log(formik.values);
   return (

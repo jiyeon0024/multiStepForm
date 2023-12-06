@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-const UserInfoSchema = Yup.object().shape({
+export const UserInfoSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, "Too Short!")
     .max(30, "Too Long!")
@@ -19,4 +19,10 @@ const UserInfoSchema = Yup.object().shape({
       .max(18, "Max password length is 18"),
 });
 
-export default UserInfoSchema;
+export const SelectPlanSchema = Yup.object().shape({
+  plan: Yup.string().required("Plan is required"),
+});
+
+export const AddOnsSchema = Yup.object().shape({
+  addOns: Yup.array().of(Yup.string()).min(1).required("AddOns is required"),
+});

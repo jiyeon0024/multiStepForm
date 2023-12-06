@@ -22,44 +22,144 @@ function SelectPlan({ formik }) {
         You have the option of monthly or yearly billing.
       </p>
       <div className="w-full pt-7">
-        <div className="flex gap-5 justify-start items-center w-full ">
-          <div
-            onClick={() => handleSelectPlan("Arcade")}
-            className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
-          >
-            <img src="./images/icon-arcade.svg" alt="" className="pb-5" />
-            <label>
-              <fieldset
-                className="text-[#02295a] font-bold"
-                type="radio"
-                name="arcadeMonthly"
-                value={formik.values.arcade}
-              >
-                Arcade
-              </fieldset>
-            </label>
-            <p className="text-sm text-gray-400">$9/mo</p>
+        {formik.values.period === "monthly" ? (
+          <div className="flex gap-5 justify-start items-center w-full ">
+            <div
+              onClick={() => handleSelectPlan("Arcade")}
+              className={
+                formik.errors.plan
+                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : formik.values.plan.includes("Arcade")
+                  ? "border border-[#473dff]  bg-[#f0f6ff]  rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+              }
+            >
+              <img src="./images/icon-arcade.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="arcade"
+                  value={formik.values.plan}
+                >
+                  Arcade
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$9/mo</p>
+            </div>
+            <div
+              onClick={() => handleSelectPlan("Advanced")}
+              className={
+                formik.errors.plan
+                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : formik.values.plan.includes("Advanced")
+                  ? "border border-[#473dff]  bg-[#f0f6ff]  rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+              }
+            >
+              <img src="./images/icon-advanced.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="advanced"
+                  value={formik.values.plan}
+                >
+                  Advanced
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$12/mo</p>
+            </div>
+            <div
+              onClick={() => handleSelectPlan("Pro")}
+              className={
+                formik.errors.plan
+                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : formik.values.plan.includes("Pro")
+                  ? "border border-[#473dff]  bg-[#f0f6ff]  rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+              }
+            >
+              <img src="./images/icon-pro.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="pro"
+                  value={formik.values.plan}
+                >
+                  Pro
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$15/mo</p>
+            </div>
           </div>
-          <div
-            onClick={() => handleSelectPlan("Advanced")}
-            className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
-          >
-            <img src="./images/icon-advanced.svg" alt="" className="pb-5" />
-            <p className="text-[#02295a] font-bold">Advanced</p>
-            <p className="text-sm text-gray-400">$12/mo</p>
+        ) : (
+          <div className="flex gap-5 justify-start items-center w-full ">
+            <div
+              onClick={() => handleSelectPlan("Arcade")}
+              className={
+                formik.errors.plan
+                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+              }
+            >
+              <img src="./images/icon-arcade.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="arcade"
+                  value={formik.values.plan}
+                >
+                  Arcade
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$90/yr</p>
+              <p className="text-[#02295a] text-xs">2 months free</p>
+            </div>
+            <div
+              onClick={() => handleSelectPlan("Advanced")}
+              className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
+            >
+              <img src="./images/icon-advanced.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="advanced"
+                  value={formik.values.plan}
+                >
+                  Advanced
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$120/yr</p>
+              <p className="text-[#02295a] text-xs">2 months free</p>
+            </div>
+            <div
+              onClick={() => handleSelectPlan("Pro")}
+              className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
+            >
+              <img src="./images/icon-pro.svg" alt="" className="pb-5" />
+              <label>
+                <fieldset
+                  className="text-[#02295a] font-bold"
+                  type="radio"
+                  name="pro"
+                  value={formik.values.plan}
+                >
+                  Pro
+                </fieldset>
+              </label>
+              <p className="text-sm text-gray-400">$150/yr</p>
+              <p className="text-[#02295a] text-xs">2 months free</p>
+            </div>
           </div>
-          <div
-            onClick={() => handleSelectPlan("Pro")}
-            className="border border-gray-300 rounded-md px-2 py-3 min-w-[120px]"
-          >
-            <img src="./images/icon-pro.svg" alt="" className="pb-5" />
-            <p className="text-[#02295a] font-bold">Pro</p>
-            <p className="text-sm text-gray-400">$15/mo</p>
-          </div>
-        </div>
+        )}
+
         <div
           onClick={handlePeriod}
-          className=" bg-[#f0f6ff] rounded-md p-2 flex justify-center items-center gap-5 mt-7"
+          className=" bg-[#f0f6ff] rounded-md p-2 flex justify-center items-center gap-5 mt-7 cursor-pointer"
         >
           {formik.values.period === "monthly" ? (
             <span className="text-[#02295a] text-sm font-semibold">

@@ -1,20 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { prices } from "../util/prices";
 
-function Summary({ formik }) {
+function Summary({ formik, setStep }) {
   let arr = [];
   let sum = 0;
-  const prices = [
-    {
-      period: "monthly",
-      plan: { Arcade: 9, Advanced: 12, Pro: 15 },
-      addOns: { onlineService: 1, largerStorage: 2, customizableProfile: 2 },
-    },
-    {
-      period: "yearly",
-      plan: { Arcade: 90, Advanced: 120, Pro: 150 },
-      addOns: { onlineService: 10, largerStorage: 20, customizableProfile: 20 },
-    },
-  ];
 
   prices.map((i) => {
     if (formik.values.period === i.period) {
@@ -30,19 +19,19 @@ function Summary({ formik }) {
     addOns = i.addOns;
   });
 
-  arr.map((i) => {
+  arr.forEach((i) => {
     plans = i.plan;
   });
 
-  Object.entries(addOns).map((i) => {
-    console.log(i[0]);
+  Object.entries(addOns).forEach((i) => {
+    // console.log(i[0]);
 
     if (formik.values.addOns.includes(i[0])) {
       summery.push(i[1]);
     }
   });
 
-  Object.entries(plans).map((i) => {
+  Object.entries(plans).forEach((i) => {
     if (formik.values.plan.includes(i[0])) {
       summery.push(i[1]);
     }
@@ -64,37 +53,84 @@ function Summary({ formik }) {
             <div>
               <p className="text-[#02295a] font-semibold">
                 {formik.values.plan}
-                <span>({formik.values.period})</span>
+                <span> ({formik.values.period})</span>
               </p>
-              <p className="text-gray-400 underline decoration-gray-800 ">
+              <button
+                onClick={() => {
+                  setStep(2);
+                }}
+                className="text-gray-500 underline decoration-gray-800 hover:text-[#473dff] "
+              >
                 Change
-              </p>
+              </button>
             </div>
 
-            {formik.values.plan === "Arcade" ? (
+            {formik.values.plan === "Arcade" &&
+            formik.values.period === "monthly" ? (
               <p className="text-[#02295a] font-semibold ">$9/mo</p>
-            ) : formik.values.paln === "Advanced" ? (
+            ) : formik.values.paln === "Advanced" &&
+              formik.values.period === "monthly" ? (
               <p className="text-[#02295a] font-semibold ">$12/mo</p>
-            ) : (
+            ) : formik.values.plan === "Pro" &&
+              formik.values.period === "monthly" ? (
               <p className="text-[#02295a] font-semibold ">$15/mo</p>
-            )}
+            ) : null}
+            {formik.values.plan === "Arcade" &&
+            formik.values.period === "yearly" ? (
+              <p className="text-[#02295a] font-semibold ">$90/yr</p>
+            ) : formik.values.paln === "Advanced" &&
+              formik.values.period === "yearly" ? (
+              <p className="text-[#02295a] font-semibold ">$120/yr</p>
+            ) : formik.values.plan === "Pro" &&
+              formik.values.period === "yearly" ? (
+              <p className="text-[#02295a] font-semibold ">$150/yr</p>
+            ) : null}
           </div>
           <hr className="border-gray-300 mt-5 mb-5" />
 
-          <div className="">
-            {formik.values.addOns.map((i) => {
-              return (
-                <div key={i} className="flex justify-between">
-                  <p>{i}</p>
-                  {i === "onlineService" ? <p>+$1/mo</p> : <p>+$2/mo</p>}
-                </div>
-              );
-            })}
-          </div>
+          {formik.values.period === "monthly" ? (
+            <div className="">
+              {formik.values.addOns.map((i, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="flex justify-between text-gray-500"
+                  >
+                    <p>{i}</p>
+                    {i === "onlineService" ? <p>+$1/mo</p> : <p>+$2/mo</p>}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="">
+              {formik.values.addOns.map((i) => {
+                return (
+                  <div key={i} className="flex justify-between">
+                    <p>{i}</p>
+                    {i === "onlineService" ? <p>+$10/yr</p> : <p>+$20/yr</p>}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="flex justify-between items-center p-4">
-          <p className="text-[#473dff] font-bold">total</p>
-          <p>+${sum}</p>
+          <p className="text-gray-500">
+            Total
+            {formik.values.period === "monthly" ? (
+              <span> (per month)</span>
+            ) : (
+              <span> (per year)</span>
+            )}
+          </p>
+          <p className="text-[#473dff] font-extrabold text-lg">
+            {formik.values.period === "monthly" ? (
+              <span> +${sum}/mo</span>
+            ) : (
+              <span> ${sum}/yr</span>
+            )}
+          </p>
         </div>
       </div>
     </div>

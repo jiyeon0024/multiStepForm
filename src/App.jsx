@@ -11,7 +11,11 @@ import ThankModal from "./components/ThankModal";
 import NextBtn from "./components/NextBtn";
 import ConfirmBtn from "./components/ConfirmBtn";
 import GoBackBtn from "./components/GoBackBtn";
-import UserInfoSchema from "./util/formValidation";
+import {
+  AddOnsSchema,
+  SelectPlanSchema,
+  UserInfoSchema,
+} from "./util/formValidation";
 
 function App() {
   const [step, setStep] = useState(1);
@@ -24,7 +28,14 @@ function App() {
       period: "monthly",
       addOns: [],
     },
-    validationSchema: step === 1 ? UserInfoSchema : "",
+    validationSchema:
+      step === 1
+        ? UserInfoSchema
+        : step === 2
+        ? SelectPlanSchema
+        : step === 3
+        ? AddOnsSchema
+        : "",
     onSubmit: (values) => {
       console.log(values);
       switch (step) {
@@ -36,6 +47,9 @@ function App() {
           break;
         case 3:
           setStep(4);
+          break;
+        case 4:
+          setStep(5);
           break;
         default:
           break;
@@ -64,7 +78,7 @@ function App() {
             ) : step === 3 ? (
               <AddOns formik={formik} />
             ) : step === 4 ? (
-              <Summary formik={formik} />
+              <Summary formik={formik} setStep={setStep} />
             ) : step === 5 ? (
               <ThankModal formik={formik} />
             ) : null}

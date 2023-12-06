@@ -42,7 +42,11 @@ function SideMenu({ setStep, formik }) {
         </li>
         <li
           className="text-white flex justify-start items-center gap-3 cursor-pointer"
-          onClick={() => setStep(3)}
+          onClick={() => {
+            if (formik.values.plan !== "") {
+              setStep(3);
+            }
+          }}
         >
           <Bs3Circle size={30} className="text-white cursor-pointer" />
           <div className="">
@@ -52,7 +56,11 @@ function SideMenu({ setStep, formik }) {
         </li>
         <li
           className="text-white flex justify-start items-center gap-3 cursor-pointer"
-          onClick={() => setStep(4)}
+          onClick={() => {
+            if (formik.values.addOns !== "") {
+              setStep(4);
+            }
+          }}
         >
           <Bs4Circle size={30} className="text-white cursor-pointer" />
           <div className="">
