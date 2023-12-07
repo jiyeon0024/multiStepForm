@@ -13,6 +13,8 @@ function SelectPlan({ formik }) {
     );
   };
 
+  // mobile screen: start from advanced
+
   return (
     <div className=" py-5  flex flex-col items-start justify-center   w-[400px] max-w-[100%] ">
       <h3 className="font-extrabold text-3xl text-[#02295a]">
@@ -23,29 +25,37 @@ function SelectPlan({ formik }) {
       </p>
       <div className="w-full pt-7">
         {formik.values.period === "monthly" ? (
-          <div className="flex gap-5 justify-start items-center w-full ">
+          <div className="sm:flex      sm:gap-5 justify-start items-center w-full ">
             <div
               onClick={() => handleSelectPlan("Arcade")}
               className={
                 formik.errors.plan
-                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  ? "border border-red-500 rounded-md px-2 py-3 min-w-[120px] cursor-pointer sm:flex-col flex items-center sm:items-start gap-5 sm:gap-0"
                   : formik.values.plan.includes("Arcade")
-                  ? "border border-[#473dff]  bg-[#f0f6ff]  rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
-                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer"
+                  ? "border border-[#473dff]  bg-[#f0f6ff]  rounded-md px-2 py-3 min-w-[120px] cursor-pointer sm:flex-col flex sm:items-start items-center gap-5 sm:gap-0"
+                  : "border border-gray-300 rounded-md px-2 py-3 min-w-[120px] cursor-pointer sm:flex-col flex items-center gap-5 sm:items-start sm:gap-0"
               }
             >
-              <img src="./images/icon-arcade.svg" alt="" className="pb-5" />
-              <label>
-                <fieldset
-                  className="text-[#02295a] font-bold"
-                  type="radio"
-                  name="arcade"
-                  value={formik.values.plan}
-                >
-                  Arcade
-                </fieldset>
-              </label>
-              <p className="text-sm text-gray-400">$9/mo</p>
+              <div className="flex justify-center items-center">
+                <img
+                  src="./images/icon-arcade.svg"
+                  alt=""
+                  className="sm:pb-5 w-10 "
+                />
+              </div>
+              <div>
+                <label>
+                  <fieldset
+                    className="text-[#02295a] font-bold"
+                    type="radio"
+                    name="arcade"
+                    value={formik.values.plan}
+                  >
+                    Arcade
+                  </fieldset>
+                </label>
+                <p className="text-sm text-gray-400">$9/mo</p>
+              </div>
             </div>
             <div
               onClick={() => handleSelectPlan("Advanced")}
